@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create]
 
   def new
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
     @post = Post.new
   end
 
@@ -19,10 +19,11 @@ class PostsController < ApplicationController
       render :new
     end
 end
+
 private
 
 def post_params
   params.require(:post).permit(:content)
-end
+  end
 
-end 
+end
